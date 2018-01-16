@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <script src="anime.min.js"></script>
+  <title>bottle-effects</title>
+</head>
+<body>
+  <div class="controls">
+    <button id="play">PLAY</button>
+  </div>
+  <div class="viewbox">
+    <svg id="svg" width="100%" height="100%" viewBox="0 0 750 667">
+      <defs>
+        <!-- Specular Spotlight -->
+        <filter id="spotlight">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feSpecularLighting result="light" in="blur" specularConstant="1.2" specularExponent="7" lighting-color="#ffffff">
+            <feSpotLight x="40" y="-200" z="10" pointsAtX="150" pointsAtY="100" pointsAtZ="0" limitingConeAngle="20"/>
+          </feSpecularLighting>
+          <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+        </filter>
+        <!-- Specular Pointlight -->
+        <filter id="pointlight">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feSpecularLighting result="light" in="blur" specularExponent="35" lighting-color="#cccccc">
+            <fePointLight x="187.5" y="0" z="200" />
+          </feSpecularLighting>
+          <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+        </filter>
+        <!-- Diffuse Pointlight -->
+        <filter id="diffuselight">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feDiffuseLighting result="light" in="blur" lighting-color="white">
+            <fePointLight x="400" y="400" z="150" pointsAtX="0" pointsAtY="0" pointsAtZ="0"/>
+          </feDiffuseLighting>
+          <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+        </filter>
+      </defs>
+      <g id="scene" filter="url(#spotlight)">
+        <g id="bottles">
+          <g id="bottleA">
+            <path d="M365.033,667L9.978,667L9.978,165.683C12.806,121.214 34.863,66.577 88.245,37.04C102.947,26.654 112.457,14.266 117.099,0L257.913,0C262.555,14.266 272.065,26.654 286.767,37.04C340.149,66.577 362.206,121.214 365.033,165.683L365.033,667Z" style="fill-opacity:0.32549;"/>
+            <path class="reflection" d="M131.365,42.474C144.636,58.092 156.535,73.048 165.288,90.152C152.927,117.223 150.123,143.257 148.198,169.196L22.583,166.632C26.665,93.826 72.239,51.739 131.365,42.474Z" style="fill:white;"/>
+            <path class="reflection" d="M127.024,0L127.024,11.272C142.774,22.201 158.319,18.751 173.721,5.355L172.95,0L127.024,0Z" style="fill:white;"/>
+          </g>
+          <g id="bottleB">
+            <path d="M739.962,667L384.907,667L384.907,165.683C387.734,121.214 409.792,66.577 463.173,37.04C477.875,26.654 487.385,14.266 492.028,0L632.841,0C637.483,14.266 646.993,26.654 661.695,37.04C715.077,66.577 737.134,121.214 739.962,165.683L739.962,667Z" style="fill-opacity:0.32549;"/>
+            <path class="reflection" d="M506.293,42.474C519.564,58.092 531.464,73.048 540.217,90.152C527.855,117.223 525.052,143.257 523.126,169.196L397.511,166.632C401.593,93.826 447.167,51.739 506.293,42.474Z" style="fill:white;"/>
+            <path class="reflection" d="M501.952,0L501.952,11.272C517.702,22.201 533.247,18.751 548.65,5.355L547.878,0L501.952,0Z" style="fill:white;"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
